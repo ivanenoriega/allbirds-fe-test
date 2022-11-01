@@ -1,7 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Layout from '../components/Layout'
-import RegistrationForm from '../components/RegistrationForm'
+import Head from 'next/head';
+import Image from 'next/image';
+import Layout from '../components/Layout';
+import RegistrationForm from '../components/RegistrationForm';
 
 export default function Home() {
   return (
@@ -13,5 +13,5 @@ export default function Home() {
       </Head>
       <RegistrationForm />
     </Layout>
-  )
+  );
 }

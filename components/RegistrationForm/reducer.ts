@@ -1,32 +1,56 @@
-import { SET_CONFIRM_PASSWORD, SET_EMAIL, SET_FIRST_NAME, SET_LAST_NAME, SET_PASSWORD, SET_PHONE_NUMBER } from "./actions";
+import {
+  Actions,
+  SET_CONFIRM_PASSWORD,
+  SET_EMAIL, SET_FIRST_NAME,
+  SET_LAST_NAME,
+  SET_PASSWORD,
+  SET_PHONE_NUMBER
+} from "./actions";
+
+interface RegistrationFormReducerStateField {
+  value: string, hasError: boolean, info: string, errorMessage: string
+}
 
 interface RegistrationFormReducerState {
-  firstName: string,
-  lastName: string,
+  firstName: RegistrationFormReducerStateField,
+  lastName: RegistrationFormReducerStateField,
+  phoneNumber: RegistrationFormReducerStateField,
+  email: RegistrationFormReducerStateField,
+  password: RegistrationFormReducerStateField,
+  confirmPassword: RegistrationFormReducerStateField
 }
 
 interface RegistrationFormReducerAction {
-  action: 'SET_FIRST_NAME' | 'SET_LAST_NAME' | 'SET_PHONE_NUMBER' | 'SET_EMAIL' | 'SET_PASSWORD' | 'SET_CONFIRM_PASSWORD'
-  payload?: string
+  type: Actions
+  payload: string
 }
 
-export const initialState = { firstName: '', lastName: '' };
+export const initialState: RegistrationFormReducerState = {
+  firstName: { value: '', hasError: false, info: '', errorMessage: '' },
+  lastName: { value: '', hasError: false, info: '', errorMessage: '' },
+  phoneNumber: { value: '', hasError: false, info: '', errorMessage: '' },
+  email: { value: '', hasError: false, info: '', errorMessage: '' },
+  password: { value: '', hasError: false, info: '', errorMessage: '' },
+  confirmPassword: { value: '', hasError: false, info: '', errorMessage: '' }
+};
 
-export function registrationFormReducer(state: RegistrationFormReducerState, action: RegistrationFormReducerAction) {
-  switch (action.action) {
+export const registrationFormReducer = (
+  state: RegistrationFormReducerState,
+  action: RegistrationFormReducerAction) => {
+  switch (action.type) {
     case SET_FIRST_NAME:
-      return { ...state, firstName: action.payload };
+      return { ...state, firstName: { ...state.firstName, value: action.payload } };
     case SET_LAST_NAME:
-      return { ...state, lastName: action.payload };
+      return { ...state, lastName: { ...state.lastName, value: action.payload } };
     case SET_PHONE_NUMBER:
-      return { ...state, phoneNumber: action.payload };
+      return { ...state, phoneNumber: { ...state.phoneNumber, value: action.payload } };
     case SET_EMAIL:
-      return { ...state, email: action.payload };
+      return { ...state, email: { ...state.email, value: action.payload } };
     case SET_PASSWORD:
-      return { ...state, password: action.payload };
+      return { ...state, password: { ...state.password, value: action.payload } };
     case SET_CONFIRM_PASSWORD:
-      return { ...state, confirmPassword: action.payload };
+      return { ...state, confirmPassword: { ...state.confirmPassword, value: action.payload } };
     default:
       throw new Error();
   }
-}
+};

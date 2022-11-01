@@ -23,13 +23,13 @@ type InputTypes =
   | 'week';
 
 interface inputProps {
-    type?: InputTypes
-    value: string
-    name: string
-    label?: string
-    id?: string
-    maxlength?: number
-    onChange?: (e?: any) => void
+  type?: InputTypes
+  value: string
+  name: string
+  label?: string
+  id?: string
+  maxlength?: number
+  onChange?: (e?: any) => void
 }
 
-export default inputProps
+export default inputProps;

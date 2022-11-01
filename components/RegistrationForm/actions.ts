@@ -5,9 +5,22 @@ export const SET_EMAIL = 'SET_EMAIL';
 export const SET_PASSWORD = 'SET_PASSWORD';
 export const SET_CONFIRM_PASSWORD = 'SET_CONFIRM_PASSWORD';
 
-export const setFirstName = (payload: string) => ({action: SET_FIRST_NAME, payload})
-export const setLastName = (payload: string) => ({action: SET_LAST_NAME, payload})
-export const setPhoneNumber = (payload: string) => ({action: SET_PHONE_NUMBER, payload})
-export const setEmail = (payload: string) => ({action: SET_EMAIL, payload})
-export const setPassword = (payload: string) => ({action: SET_PASSWORD, payload})
-export const setConfirmPassword = (payload: string) => ({action: SET_CONFIRM_PASSWORD, payload})
+export type Actions =
+    typeof SET_FIRST_NAME |
+    typeof SET_LAST_NAME |
+    typeof SET_PHONE_NUMBER |
+    typeof SET_EMAIL |
+    typeof SET_PASSWORD |
+    typeof SET_CONFIRM_PASSWORD;
+
+export type ReturnStatement = {
+    type: Actions
+    payload: string
+};
+
+export const setFirstName = (payload: string): ReturnStatement => ({ type: SET_FIRST_NAME, payload });
+export const setLastName = (payload: string): ReturnStatement => ({ type: SET_LAST_NAME, payload });
+export const setPhoneNumber = (payload: string): ReturnStatement => ({ type: SET_PHONE_NUMBER, payload });
+export const setEmail = (payload: string): ReturnStatement => ({ type: SET_EMAIL, payload });
+export const setPassword = (payload: string): ReturnStatement => ({ type: SET_PASSWORD, payload });
+export const setConfirmPassword = (payload: string): ReturnStatement => ({ type: SET_CONFIRM_PASSWORD, payload });
