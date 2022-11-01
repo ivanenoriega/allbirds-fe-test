@@ -1,0 +1,29 @@
+@import 'styles/variables/colors';
+@import 'styles/mixins/mediaqueries';
+
+.input {
+  background: $white;
+  padding: 3px;
+  border: 1px solid rgba(34,36,38,.15);
+  color: rgba(0,0,0,.87);
+  border-radius: 0.28571429rem;
+  min-width: 100%;
+
+  &:focus {
+    border-color: $black;
+  }
+
+  @include tablet-up {
+    min-width: 650px;
+  }
+
+  @include desktop-up {
+    min-width: 800px;
+  }
+}
+
+.label {
+  .text {
+    margin-bottom: 5px;
+  }
+}
