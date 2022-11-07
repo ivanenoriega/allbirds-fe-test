@@ -2,10 +2,6 @@
   "extends": [
     "next/core-web-vitals"
   ],
-  "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint"
-  ],
   "rules": {
     "max-len": [
       "error",
@@ -13,7 +9,6 @@
         "code": 120
       }
     ],
-    "semi": 1,
-    "@typescript-eslint/semi": "error"
+    "semi": 1
   }
 }
