@@ -1,8 +1,14 @@
 import { FC } from "react";
-import buttonProps from "./types";
+import buttonProps from "./Button.types";
+import styles from "./Button.module.scss";
+import classNames from "classnames";
 
-const Button: FC<buttonProps> = ({ children }) => {
-    return <button>{children}</button>;
+const Button: FC<buttonProps> = ({ children, type = 'submit', disabled = false }) => {
+    return <button
+        disabled={disabled}
+        type={type}
+        className={classNames(styles.button, { [styles.disabled]: disabled })}
+    >{children}</button>;
 };
 
 export default Button;

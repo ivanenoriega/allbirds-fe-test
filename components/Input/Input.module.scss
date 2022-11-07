@@ -1,31 +1,42 @@
 @import 'styles/variables/colors';
 @import 'styles/mixins/mediaqueries';
 
-.input {
-  background: $white;
-  padding: 10px;
-  border: 1px solid rgba(34, 36, 38, .15);
-  color: rgba(0, 0, 0, .87);
-  border-radius: 0.28571429rem;
-  min-width: 100%;
-
-  &:focus {
-    border-color: $black;
-  }
-
-  @include tablet-up {
-    min-width: 650px;
-  }
-
-  @include desktop-up {
-    min-width: 800px;
-  }
-}
-
 .label {
+  position: relative;
+  padding-bottom: 10px;
+
   .text {
     margin-bottom: 5px;
-    font-size: 18px;
+    font-size: 16px;
     text-transform: uppercase;
+  }
+
+  .input {
+    background: $white;
+    padding: 10px;
+    border: 1px solid rgba($black, .15);
+    color: rgba($black, .87);
+    border-radius: 3;
+    width: 100%;
+  }
+
+  .message {
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+  }
+
+  &.hasError {
+    .text {
+      color: red;
+    }
+
+    .input {
+      border: 1px solid red;
+    }
+
+    .message {
+      color: red;
+    }
   }
 }

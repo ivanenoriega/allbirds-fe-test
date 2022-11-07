@@ -1,6 +1,7 @@
-import { useReducer } from "react";
+import { useCallback, useReducer } from "react";
 import Button from "../Button";
 import Input from "../Input";
+import PhoneNumberInput from "../PhoneNumberInput";
 import {
   ReturnStatement,
   setConfirmPassword,
@@ -9,18 +10,21 @@ import {
   setLastName,
   setPassword,
   setPhoneNumber
-} from "./actions";
-import { initialState, registrationFormReducer } from "./reducer";
+} from "./RegistrationForm.actions";
+import { initialState, registrationFormReducer } from "./RegistrationForm.reducer";
 import styles from "./RegistrationForm.module.scss";
 
 const RegistrationForm = () => {
   const [state, dispatch] = useReducer(registrationFormReducer, initialState);
 
-  // Handlers
   type Function = (arg: string) => ReturnStatement;
-  const onChangeInputHandler = (onChangeInput: Function) => (event: React.FormEvent<HTMLInputElement>) => {
+  const onChangeInputHandler = useCallback((onChangeInput: Function) => (event: React.FormEvent<HTMLInputElement>) => {
     dispatch(onChangeInput(event.currentTarget.value));
-  };
+  }, []);
+
+  const onChangePhoneNumberHandler = useCallback((value: string) => {
+    dispatch(setPhoneNumber(value));
+  }, []);
 
   return (
     <form className={styles.main}>
@@ -31,7 +35,10 @@ const RegistrationForm = () => {
         id='first_name'
         name='first_name'
         type="text"
-        maxlength={250} />
+        maxlength={100}
+        message={state.firstName.errorMessage}
+        hasError={state.firstName.hasError}
+      />
       <Input
         value={state.lastName.value}
         onChange={onChangeInputHandler(setLastName)}
@@ -39,40 +46,55 @@ const RegistrationForm = () => {
         id='last_name'
         name='last_name'
         type="text"
-        maxlength={250} />
-      <Input
+        maxlength={100}
+        message={state.lastName.errorMessage}
+        hasError={state.lastName.hasError}
+      />
+      <PhoneNumberInput
         value={state.phoneNumber.value}
-        onChange={onChangeInputHandler(setPhoneNumber)}
+        onChange={onChangePhoneNumberHandler}
         label="phone number"
         id='phone_number'
         name='phone_number'
         type="tel"
-        maxlength={250} />
+        maxlength={24}
+        message={state.phoneNumber.errorMessage}
+        hasError={state.phoneNumber.hasError}
+      />
       <Input
         value={state.email.value}
         onChange={onChangeInputHandler(setEmail)}
-        label="email"
+        label="email *"
         id='email'
         name='email'
         type="email"
-        maxlength={250} />
+        maxlength={250}
+        message={state.email.errorMessage}
+        hasError={state.email.hasError}
+        required
+      />
       <Input
         value={state.password.value}
         onChange={onChangeInputHandler(setPassword)}
-        label="password"
+        label="password *"
         id='password'
         name='password'
         type="password"
-        maxlength={250} />
+        maxlength={250}
+        required
+      />
       <Input
         value={state.confirmPassword.value}
         onChange={onChangeInputHandler(setConfirmPassword)}
-        label="confirm password"
+        label="confirm password *"
         id='confirm_password'
         name='confirm_password'
         type="password"
-        maxlength={250} />
-      <Button type="submit">register</Button>
+        maxlength={250}
+        required
+      />
+      <Button disabled>register</Button>
+      <p className={styles.disclaimer}>* required fields</p>
     </form>
   );
 };

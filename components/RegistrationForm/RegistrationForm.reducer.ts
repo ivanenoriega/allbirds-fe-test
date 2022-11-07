@@ -5,10 +5,13 @@ import {
   SET_LAST_NAME,
   SET_PASSWORD,
   SET_PHONE_NUMBER
-} from "./actions";
+} from "./RegistrationForm.actions";
+import { validateEmail, validateFirstName, validateLastName, validatePhoneNumber } from "./RegistrationForm.utls";
 
 interface RegistrationFormReducerStateField {
-  value: string, hasError: boolean, info: string, errorMessage: string
+  value: string,
+  hasError: boolean,
+  errorMessage: string,
 }
 
 interface RegistrationFormReducerState {
@@ -17,7 +20,7 @@ interface RegistrationFormReducerState {
   phoneNumber: RegistrationFormReducerStateField,
   email: RegistrationFormReducerStateField,
   password: RegistrationFormReducerStateField,
-  confirmPassword: RegistrationFormReducerStateField
+  confirmPassword: RegistrationFormReducerStateField,
 }
 
 interface RegistrationFormReducerAction {
@@ -26,12 +29,12 @@ interface RegistrationFormReducerAction {
 }
 
 export const initialState: RegistrationFormReducerState = {
-  firstName: { value: '', hasError: false, info: '', errorMessage: '' },
-  lastName: { value: '', hasError: false, info: '', errorMessage: '' },
-  phoneNumber: { value: '', hasError: false, info: '', errorMessage: '' },
-  email: { value: '', hasError: false, info: '', errorMessage: '' },
-  password: { value: '', hasError: false, info: '', errorMessage: '' },
-  confirmPassword: { value: '', hasError: false, info: '', errorMessage: '' }
+  firstName: { value: '', hasError: false, errorMessage: '' },
+  lastName: { value: '', hasError: false, errorMessage: '' },
+  phoneNumber: { value: '', hasError: false, errorMessage: '' },
+  email: { value: '', hasError: false, errorMessage: '' },
+  password: { value: '', hasError: false, errorMessage: '' },
+  confirmPassword: { value: '', hasError: false, errorMessage: '' },
 };
 
 export const registrationFormReducer = (
@@ -39,13 +42,13 @@ export const registrationFormReducer = (
   action: RegistrationFormReducerAction) => {
   switch (action.type) {
     case SET_FIRST_NAME:
-      return { ...state, firstName: { ...state.firstName, value: action.payload } };
+      return { ...state, firstName: { ...state.firstName, ...validateFirstName(action.payload) } };
     case SET_LAST_NAME:
-      return { ...state, lastName: { ...state.lastName, value: action.payload } };
+      return { ...state, lastName: { ...state.lastName, ...validateLastName(action.payload) } };
     case SET_PHONE_NUMBER:
-      return { ...state, phoneNumber: { ...state.phoneNumber, value: action.payload } };
+      return { ...state, phoneNumber: { ...state.phoneNumber, ...validatePhoneNumber(action.payload) } };
     case SET_EMAIL:
-      return { ...state, email: { ...state.email, value: action.payload } };
+      return { ...state, email: { ...state.email, ...validateEmail(action.payload) } };
     case SET_PASSWORD:
       return { ...state, password: { ...state.password, value: action.payload } };
     case SET_CONFIRM_PASSWORD:

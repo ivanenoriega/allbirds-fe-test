@@ -29,7 +29,10 @@ interface inputProps {
   label?: string
   id?: string
   maxlength?: number
-  onChange?: (e?: any) => void
+  hasError?: boolean,
+  message?: string,
+  onChange?: (e?: any) => void,
+  required?: boolean
 }
 
 export default inputProps;

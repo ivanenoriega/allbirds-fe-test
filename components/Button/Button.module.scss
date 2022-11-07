@@ -1,0 +1,17 @@
+@import 'styles/variables/colors';
+@import 'styles/mixins/mediaqueries';
+
+.button {
+  background: $black;
+  padding: 20px;
+  color: $white;
+  border-radius: 3px;
+  min-width: 100%;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+
+  &.disabled {
+    background-color: rgba($black, 0.3);
+  }
+}
