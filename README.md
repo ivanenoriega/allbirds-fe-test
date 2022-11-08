@@ -39,6 +39,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 The `main` branch is deployed to Vercel every time it gets updated.
 
+- URL: https://allbirds-fe-test.vercel.app/
+
 # Considerations
 
 The form is toggling between the error and success case scenarios. The first time you submit the form with all the required fields you will get an error message. Submit the form again and the success message will show up.
