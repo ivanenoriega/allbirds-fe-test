@@ -1,6 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Deliverables
 
-## Getting Started
+Create a sign up page. The inputs are: 
+
+- First Name
+- Last Name
+- Phone Number
+- When a user enters their phone number, it should automatically format the input to follow the pattern
+ (***)***-**** as they are typing. 
+- Email Address
+- Password
+- Password Confirmation
+
+
+## Additional Considerations/Requirements
+
+- User experience is important! We not only want to see a functional product, but also want to see your perspective on what makes a positive experience for your users.
+- Add any additional validation you think is relevant for a standard signup form.
+- You should use React to build this page.
+- You don’t have to actually submit the form data to an API, but you should mock a success/error state once submitting the form.
+- Please don’t spend more than a few hours on this assignment.
+
+
+# Submission Instructions
+
+Send us a link to a Github repo. In your repository, include a README.md on how to get your project up and running. If you choose to host your page somewhere, include a link to the URL in your README.md. 
+
+# Getting Started
 
 First, run the development server:
 
@@ -12,23 +37,6 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+# Considerations
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The form is toggling between the error and success case scenarios. The first time you submit the form with all the required fields you will get an error message. Submit the form again and the success message will show up.
