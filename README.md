@@ -35,10 +35,14 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+# CI/CD
+
+The `main` branch is deployed to Vercel every time it gets updated.
+
 # Considerations
 
 The form is toggling between the error and success case scenarios. The first time you submit the form with all the required fields you will get an error message. Submit the form again and the success message will show up.
 
-# Lighthouse report:
+# Lighthouse report
 
 - URL: https://googlechrome.github.io/lighthouse/viewer/?psiurl=https%3A%2F%2Fallbirds-fe-test.vercel.app%2F&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa&utm_source=lh-chrome-ext
