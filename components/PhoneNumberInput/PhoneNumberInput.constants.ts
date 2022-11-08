@@ -1,0 +1,1 @@
+export const ONLY_DIGITS_REGEX = /\D/g;

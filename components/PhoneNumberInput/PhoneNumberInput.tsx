@@ -7,6 +7,7 @@ const PhoneNumberInput: FC<PhoneNumberInputProps> = ({ onChange, ...restOfProps 
   const onChangeHandler = useCallback((event: React.FormEvent<HTMLInputElement>) => {
     onChange(formatPhoneNumber(event.currentTarget.value));
   }, [onChange]);
+
   return <Input onChange={onChangeHandler} {...restOfProps} />;
 };
 

@@ -1,7 +1,7 @@
+import { ONLY_DIGITS_REGEX } from "./PhoneNumberInput.constants";
+
 const clearNonNumbersValues = (value: string) => {
-    const regex = /\D/g;
-    console.log('regex', { value: value, result: value.replaceAll(regex, '') });
-    return value.replaceAll(regex, '');
+    return value.replaceAll(ONLY_DIGITS_REGEX, '');
 };
 
 export const formatPhoneNumber = (value: string): string => {
