@@ -3,7 +3,6 @@ import Button from "../Button";
 import Input from "../Input";
 import PhoneNumberInput from "../PhoneNumberInput";
 import {
-  ReturnStatement,
   setConfirmPassword,
   setEmail,
   setFirstName,
@@ -13,6 +12,17 @@ import {
 } from "./RegistrationForm.actions";
 import { initialState, registrationFormReducer } from "./RegistrationForm.reducer";
 import styles from "./RegistrationForm.module.scss";
+import PasswordInput from "../PasswordInput";
+import { ReturnStatement } from "./RegistrationForm.types";
+import { BUTTON_TYPE_SUBMIT } from "../Button/Button.constants";
+import {
+  CONFIRM_PASSWORD_CONFIG,
+  EMAIL_CONFIG,
+  FIRST_NAME_CONFIG,
+  LAST_NAME_CONFIG,
+  PASSWORD_CONFIG,
+  PHONE_NUMBER_CONFIG
+} from "./RegistrationForm.constants";
 
 const RegistrationForm = () => {
   const [state, dispatch] = useReducer(registrationFormReducer, initialState);
@@ -31,69 +41,46 @@ const RegistrationForm = () => {
       <Input
         value={state.firstName.value}
         onChange={onChangeInputHandler(setFirstName)}
-        label="first name"
-        id='first_name'
-        name='first_name'
-        type="text"
-        maxlength={100}
         message={state.firstName.errorMessage}
         hasError={state.firstName.hasError}
+        {...FIRST_NAME_CONFIG}
       />
       <Input
         value={state.lastName.value}
         onChange={onChangeInputHandler(setLastName)}
-        label="last name"
-        id='last_name'
-        name='last_name'
-        type="text"
-        maxlength={100}
         message={state.lastName.errorMessage}
         hasError={state.lastName.hasError}
+        {...LAST_NAME_CONFIG}
       />
       <PhoneNumberInput
         value={state.phoneNumber.value}
         onChange={onChangePhoneNumberHandler}
-        label="phone number"
-        id='phone_number'
-        name='phone_number'
-        type="tel"
-        maxlength={24}
         message={state.phoneNumber.errorMessage}
         hasError={state.phoneNumber.hasError}
+        {...PHONE_NUMBER_CONFIG}
       />
       <Input
         value={state.email.value}
         onChange={onChangeInputHandler(setEmail)}
-        label="email *"
-        id='email'
-        name='email'
-        type="email"
-        maxlength={250}
         message={state.email.errorMessage}
         hasError={state.email.hasError}
-        required
+        {...EMAIL_CONFIG}
       />
-      <Input
+      <PasswordInput
         value={state.password.value}
         onChange={onChangeInputHandler(setPassword)}
-        label="password *"
-        id='password'
-        name='password'
-        type="password"
-        maxlength={250}
-        required
+        message={state.password.errorMessage}
+        hasError={state.password.hasError}
+        {...PASSWORD_CONFIG}
       />
-      <Input
+      <PasswordInput
         value={state.confirmPassword.value}
         onChange={onChangeInputHandler(setConfirmPassword)}
-        label="confirm password *"
-        id='confirm_password'
-        name='confirm_password'
-        type="password"
-        maxlength={250}
-        required
+        message={state.confirmPassword.errorMessage}
+        hasError={state.confirmPassword.hasError}
+        {...CONFIRM_PASSWORD_CONFIG}
       />
-      <Button disabled>register</Button>
+      <Button type={BUTTON_TYPE_SUBMIT} disabled={!state.validForm}>register</Button>
       <p className={styles.disclaimer}>* required fields</p>
     </form>
   );
