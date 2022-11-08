@@ -16,9 +16,9 @@ const PasswordInput: FC<inputProps> = ({ ...restOfProps }) => {
   }, [show]);
 
   return <Input {...restOfProps} type={type}>
-    <span className={styles.eye} onClick={onChangeHandler}>
-      {show ? <Image {...EYE_OFF_CONFIG} /> : <Image {...EYE_CONFIG} />}
-    </span>
+    {show ?
+      <Image className={styles.eye} onClick={onChangeHandler} {...EYE_OFF_CONFIG} /> :
+      <Image className={styles.eye} onClick={onChangeHandler} {...EYE_CONFIG} />}
   </Input>;
 };
 
