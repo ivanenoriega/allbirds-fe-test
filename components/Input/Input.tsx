@@ -9,6 +9,7 @@ const Input: FC<inputProps> = ({
   message = '',
   hasError = false,
   required = false,
+  children = null,
   name,
   label,
   id,
@@ -17,6 +18,7 @@ const Input: FC<inputProps> = ({
 }) => {
   return (
     <label className={classNames(styles.label, { [styles.hasError]: hasError })}>
+      {children}
       {label && <span className={styles.text}>{label}</span>}
       <input
         maxLength={maxlength}
