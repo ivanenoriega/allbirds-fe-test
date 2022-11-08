@@ -1,6 +1,9 @@
 import { INPUT_TYPE_EMAIL, INPUT_TYPE_PASSWORD, INPUT_TYPE_TEL, INPUT_TYPE_TEXT } from "../Input/Input.constants";
 import { inputConfig } from "./RegistrationForm.types";
 
+export const SUCCESS_MESSAGE = 'Thank you for registering!';
+// eslint-disable-next-line max-len
+export const ERROR_MESSAGE = 'Ups! There was an error while registering your information. Please, contact our support team. Sorry for the inconvenience.';
 export const ONLY_LETTERS_REGEX = /^[a-zA-Z ]+$/;
 export const PHONE_CHARACTERS_REGEX = /^[\d\(\)\- ]+$/;
 export const PHONE_FORMAT_REGEX = /(\d{3}\) \d{3}\-\d{4})$/;

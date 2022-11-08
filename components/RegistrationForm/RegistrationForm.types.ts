@@ -1,5 +1,6 @@
 import { InputTypes } from "../Input/Input.types";
 import {
+  RESET_FORM,
   SET_CONFIRM_PASSWORD,
   SET_EMAIL,
   SET_FIRST_NAME,
@@ -14,11 +15,12 @@ export type Actions =
   typeof SET_PHONE_NUMBER |
   typeof SET_EMAIL |
   typeof SET_PASSWORD |
-  typeof SET_CONFIRM_PASSWORD;
+  typeof SET_CONFIRM_PASSWORD |
+  typeof RESET_FORM;
 
 export type ReturnStatement = {
   type: Actions
-  payload: string
+  payload?: string
 };
 
 export interface RegistrationFormReducerStateField {
@@ -39,7 +41,7 @@ export interface RegistrationFormReducerState {
 
 export interface RegistrationFormReducerAction {
   type: Actions
-  payload: string
+  payload?: string
 }
 
 export interface inputConfig {

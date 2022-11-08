@@ -6,6 +6,7 @@ export const SET_PHONE_NUMBER = 'SET_PHONE_NUMBER';
 export const SET_EMAIL = 'SET_EMAIL';
 export const SET_PASSWORD = 'SET_PASSWORD';
 export const SET_CONFIRM_PASSWORD = 'SET_CONFIRM_PASSWORD';
+export const RESET_FORM = 'RESET_FORM';
 
 export const setFirstName = (payload: string): ReturnStatement => ({ type: SET_FIRST_NAME, payload });
 export const setLastName = (payload: string): ReturnStatement => ({ type: SET_LAST_NAME, payload });
@@ -13,3 +14,4 @@ export const setPhoneNumber = (payload: string): ReturnStatement => ({ type: SET
 export const setEmail = (payload: string): ReturnStatement => ({ type: SET_EMAIL, payload });
 export const setPassword = (payload: string): ReturnStatement => ({ type: SET_PASSWORD, payload });
 export const setConfirmPassword = (payload: string): ReturnStatement => ({ type: SET_CONFIRM_PASSWORD, payload });
+export const resetForm = (): ReturnStatement => ({ type: RESET_FORM });

@@ -1,4 +1,5 @@
 import {
+  RESET_FORM,
   SET_CONFIRM_PASSWORD,
   SET_EMAIL, SET_FIRST_NAME,
   SET_LAST_NAME,
@@ -33,20 +34,20 @@ export const registrationFormReducer = (
     case SET_FIRST_NAME:
       return {
         ...state,
-        firstName: validateFirstName(action.payload)
+        firstName: validateFirstName(action.payload as string)
       };
     case SET_LAST_NAME:
       return {
         ...state,
-        lastName: validateLastName(action.payload)
+        lastName: validateLastName(action.payload as string)
       };
     case SET_PHONE_NUMBER:
       return {
         ...state,
-        phoneNumber: validatePhoneNumber(action.payload)
+        phoneNumber: validatePhoneNumber(action.payload as string)
       };
     case SET_EMAIL: {
-      const email = validateEmail(action.payload);
+      const email = validateEmail(action.payload as string);
 
       return {
         ...state,
@@ -55,8 +56,8 @@ export const registrationFormReducer = (
       };
     }
     case SET_PASSWORD: {
-      const password = validatePassword(action.payload);
-      const confirmPassword = validateRepeatPassword(state.confirmPassword.value, action.payload);
+      const password = validatePassword(action.payload as string);
+      const confirmPassword = validateRepeatPassword(state.confirmPassword.value, action.payload as string);
       const validForm = validateForm(state.email, password, confirmPassword);
 
       return {
@@ -67,7 +68,7 @@ export const registrationFormReducer = (
       };
     }
     case SET_CONFIRM_PASSWORD: {
-      const confirmPassword = validateRepeatPassword(action.payload, state.password.value);
+      const confirmPassword = validateRepeatPassword(action.payload as string, state.password.value);
       const validForm = validateForm(state.email, state.password, confirmPassword);
 
       return {
@@ -76,6 +77,10 @@ export const registrationFormReducer = (
         validForm
       };
     }
+    case RESET_FORM:
+      return {
+        ...initialState,
+      };
     default:
       throw new Error();
   }
