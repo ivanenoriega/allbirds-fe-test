@@ -27,7 +27,13 @@ Send us a link to a Github repo. In your repository, include a README.md on how 
 
 # Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm run i
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
